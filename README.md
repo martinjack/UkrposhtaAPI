@@ -28,7 +28,7 @@ PHP класс для работы с API Укрпочты
 7. Редактирование группы отправлений
     * [editGroup]()
 8. Получить список групп отправлений
-    * [groupList]()
+    * [groupList](https://github.com/martinjack/UkrpochtaAPI#editgrouptoken-id-data--array)
 
 # Composer
 ```bash
