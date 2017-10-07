@@ -28,6 +28,11 @@ PHP класс для работы с API Укрпочты
 ```bash
 composer require jackmartin/ukrpochta dev-master
 ```
+
+# Библиотеки 
+
+1. [Guzzle](https://github.com/guzzle/guzzle)
+
 # Примеры
 
 ### createAddress($data = array()) ###
@@ -140,6 +145,3 @@ $result = $ukrpochta->editClient('UUID CLIENT', 'TOKEN COUNTERPARTY', array(
 print_r($result);
 ```
 
-# Библиотеки 
-
-1. [Guzzle](https://github.com/guzzle/guzzle)
