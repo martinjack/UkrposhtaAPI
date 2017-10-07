@@ -170,6 +170,16 @@ print_r($result);
 
 ### editGroup($token, $id, data = array()) ###
 ```php
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+$result = $ukrpochta->editGroup('TOKEN_COUNTERPARTY', 'UUID_GROUP', array(
+    'name'             => 'group2',
+    'counterpartyUuid' => 'UUID_COUNTERPARTY',
+));
+print_r($result);
 ```
 
 ### groupList($token) ###
