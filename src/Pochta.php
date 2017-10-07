@@ -216,7 +216,7 @@ class Pochta
      *    ЗНАЙТИ КЛІЄНТА ПО ID
      *    НАЙТИ КЛИЕНТА ПО ID
      *
-     *    @param     boolean     $type      TYPE REQUEST     CLIENT ID || EXTERNAL ID
+     *    @param     boolean     $type      TYPE REQUEST CLIENT ID || EXTERNAL ID
      *    @param     string      $token     TOKEN COUNTERPARTY
      *    @param     int         $extID     EXTERNAL ID CLIENT
      *
