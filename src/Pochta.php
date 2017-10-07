@@ -61,7 +61,7 @@ class Pochta
      *    CREATE LINK API
      *
      *    @param     string     $method     METHOD REQUEST
-     *    @param     string     $param         PARAMETERS
+     *    @param     string     $param      PARAMETERS
      *
      *    @return $this->api
      *
@@ -90,9 +90,9 @@ class Pochta
      *    REQUEST DATA
      *
      *    @param     string     $method     METHOD REQUEST
-     *    @param     array     $data         ARRAY DATA
-     *    @param     string     $param         PARAMETERS
-     *    @param     string     $type         TYPE REQUEST
+     *    @param     array      $data       ARRAY DATA
+     *    @param     string     $param      PARAMETERS
+     *    @param     string     $type       TYPE REQUEST
      *
      *    @return data
      *
@@ -188,9 +188,9 @@ class Pochta
      *    РЕДАГУВАННЯ КЛІЄНТУ
      *    РЕДАКТИРОВАНИЕ КЛИЕНТА
      *
-     *    @param     int     $id     ID CLIENT
-     *    @param     string     $token     TOKEN COUNTERPARTY
-     *    @param     array     $array     ARRAY DATA
+     *    @param     int        $id       ID CLIENT
+     *    @param     string     $token    TOKEN COUNTERPARTY
+     *    @param     array      $array    ARRAY DATA
      *
      *    @return string
      *
@@ -216,8 +216,8 @@ class Pochta
      *    ЗНАЙТИ КЛІЄНТА ПО ID
      *    НАЙТИ КЛИЕНТА ПО ID
      *
-     *    @param     boolean     $type     TYPE REQUEST     CLIENT ID || EXTERNAL ID
-     *    @param     string         $token     TOKEN COUNTERPARTY
+     *    @param     boolean     $type      TYPE REQUEST     CLIENT ID || EXTERNAL ID
+     *    @param     string      $token     TOKEN COUNTERPARTY
      *    @param     int         $extID     EXTERNAL ID CLIENT
      *
      *    @return string
