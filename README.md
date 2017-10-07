@@ -145,3 +145,19 @@ $result = $ukrpochta->editClient('UUID CLIENT', 'TOKEN COUNTERPARTY', array(
 print_r($result);
 ```
 
+### createGroup($data = array()) ###
+```php
+<?php
+
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+
+$result = $ukrpochta->createGroup('TOKEN COUNTERPARTY', array(
+    'Name'             => 'group1',
+    'counterpartyUuid' => 'UUID COUNTERPARTY',
+));
+print_r($result);
+```
