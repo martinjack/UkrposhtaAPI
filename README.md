@@ -14,7 +14,7 @@ PHP класс для работы с API Укрпочты
 # Методы API
 
 1. Создание адреса
-	* [createAddress](https://github.com/martinjack/UkrpochtaAPI#createAddress-data--array)
+	* [createAddress](https://github.com/martinjack/UkrpochtaAPI#createaddressdata--array)
 2. Редактирование адреса
 	* [editAddress](https://github.com/martinjack/UkrpochtaAPI#editaddressid-data--array)
 3. Показать адрес по ID
