@@ -122,7 +122,9 @@ class Pochta
                     $response = $client->get($this->api);
                     break;
                 case 'put':
-                    $response = $client->put($this->api);
+                    $response = $client->put($this->api, array(
+                        'body' => $this->prepare($data),
+                    ));
                     break;
 
             }
@@ -261,7 +263,7 @@ class Pochta
      **/
     public function editGroup($token, $id, $data = array())
     {
-        return $this->requestData('shipment-groups', $data, $id . '?=' . $token, 'put');
+        return $this->requestData('shipment-groups', $data, $id . '?token=' . $token, 'put');
     }
     /**
      *  ОТРИМАТИ ПЕРЕЛІК ВІДПРАВЛЕНЬ
