@@ -170,6 +170,10 @@ print_r($result);
 
 ### editGroup($token, $id, data = array()) ###
 ```php
+```
+
+### groupList($token) ###
+```php
 <?php
 
 use Ukrpochta\Pochta;
