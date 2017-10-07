@@ -163,7 +163,7 @@ class Pochta
         return $this->requestData('addresses', $data, $id);
     }
     /**
-     *    ПОКАЗАТЬ АДРЕС ПО ID
+     *    ПОКАЗАТИ АДРЕС ПО ID
      *    ПОКАЗАТЬ АДРЕС ПО ID
      *
      *     @param int     $id     ID ADDRESS
@@ -247,6 +247,8 @@ class Pochta
      *  @param  string  $token  TOKEN COUNTERPARTY
      *  @param  array   $data   DATA ARRAY
      *
+     *  @return string
+     *
      **/
     public function createGroup($token, $data = array())
     {
@@ -260,6 +262,8 @@ class Pochta
      *  @param  string  $id     UUID GROUP
      *  @param  array   $data   DATA ARRAY
      *
+     *  @return string
+     *
      **/
     public function editGroup($token, $id, $data = array())
     {
@@ -271,9 +275,23 @@ class Pochta
      *
      *  @param  string  $token  TOKEN COUNTERPARTY
      *
+     *  @return string
+     *
      **/
     public function groupList($token)
     {
         return $this->requestData('shipment-groups?token=' . $token, '', '', 'get');
+    }
+    /**
+     *   ПОКАЗАТИ ГРУППУ ВІДПРАВЛЕНЬ ПО ID
+     *   ПОКАЗАТЬ ГРУППУ ОТПРАВЛЕНИЙ ПО ID
+     *
+     *  @param string   $id
+     *  @param string   $token
+     *
+     **/
+    public function getGroup($id, $token)
+    {
+        return $this->requestData('shipment-groups', '', $id . '?token=' . $token, 'get');
     }
 }
