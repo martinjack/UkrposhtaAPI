@@ -1,6 +1,7 @@
 {
     "name": "jackmartin/ukrpochta",
     "description": "Ukrpochta API",
+    "license": "MIT",
     "authors": [
         {
             "name": "Jack Martin",

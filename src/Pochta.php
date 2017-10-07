@@ -1,9 +1,9 @@
 <?php
 /**
- *	module: Ukrpochta 0.0.1
- *	author: Evgen Kitonin
- *	version: 1
- *	create: 06.10.2017
+ *    module: Ukrpochta 0.0.1
+ *    author: Evgen Kitonin
+ *    version: 1
+ *    create: 06.10.2017
  **/
 namespace Ukrpochta;
 
@@ -13,30 +13,30 @@ use GuzzleHttp\Exception\RequestException;
 class Pochta
 {
     /**
-     *	VERSION API
-     *	
-     *	@var string
-     *	
+     *    VERSION API
+     *
+     *    @var string
+     *
      **/
     private $version = '0.0.1';
     /**
-     *	API LINK
-     *	
-     *	@var string
+     *    API LINK
+     *
+     *    @var string
      *
      **/
     private $api = 'https://www.ukrposhta.ua/ecom/';
     /**
-     *	API KEY
+     *    API KEY
      *
-     *	@var string
-     *	
+     *    @var string
+     *
      **/
     private $key = null;
     /**
-     *	INIT CLASS
+     *    INIT CLASS
      *
-     *	@var function
+     *    @var function
      *
      **/
     public function __construct($key)
@@ -47,9 +47,9 @@ class Pochta
     {
     }
     /**
-     *	
-     *	@param SET KEY
-     *	@return $this;
+     *
+     *    @param SET KEY
+     *    @return $this;
      *
      **/
     public function setKey($key)
@@ -58,27 +58,28 @@ class Pochta
         return $this;
     }
     /**
-     *	CREATE LINK API
+     *    CREATE LINK API
      *
-     *	@param 	string 	$method 	METHOD REQUEST
-     *	@param 	string 	$param 		PARAMETERS
-     * 
-     *	@return $this->api
-     *	
+     *    @param     string     $method     METHOD REQUEST
+     *    @param     string     $param         PARAMETERS
+     *
+     *    @return $this->api
+     *
      **/
     private function createLink($method, $param = '')
     {
-        if ($param != '')
+        if ($param != '') {
             $param = '/' . $param;
-        
+        }
+
         $this->api = $this->api . $this->version . '/' . $method . $param;
     }
     /**
-     *	PREPARE DATA
+     *    PREPARE DATA
      *
-     *	@param 	array 	$data 	ARRAY DATA
+     *    @param     array     $data     ARRAY DATA
      *
-     *	@return JSON
+     *    @return JSON
      *
      **/
     private function prepare($data)
@@ -86,84 +87,83 @@ class Pochta
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     }
     /**
-     *	REQUEST DATA
+     *    REQUEST DATA
      *
-     *	@param 	string 	$method 	METHOD REQUEST
-     *	@param 	array 	$data 		ARRAY DATA
-     *	@param 	string 	$param 		PARAMETERS
-     *	@param 	string 	$type 		TYPE REQUEST
+     *    @param     string     $method     METHOD REQUEST
+     *    @param     array     $data         ARRAY DATA
+     *    @param     string     $param         PARAMETERS
+     *    @param     string     $type         TYPE REQUEST
      *
-     *	@return data
-     *	
+     *    @return data
+     *
      **/
     private function requestData($method, $data = '', $param = '', $type = 'post')
     {
-        
+
         $this->createLink($method, $param);
-        
+
         $client = new Client(array(
             'headers' => array(
-                'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' . $this->key
-            )
+                'Content-Type'  => 'application/json',
+                'Authorization' => 'Bearer ' . $this->key,
+            ),
         ));
-        
+
         try {
-            
+
             switch ($type) {
-                
+
                 case 'post':
                     $response = $client->post($this->api, array(
-                        'body' => $this->prepare($data)
+                        'body' => $this->prepare($data),
                     ));
                     break;
                 case 'get':
                     $response = $client->get($this->api);
                     break;
-                    
+
             }
-            
+
             return $response->getBody()->getContents();
-            
-        }
-        catch (RequestException $e) {
-            
+
+        } catch (RequestException $e) {
+
             return $e->getResponse()->getBody()->getContents();
-            
+
         }
     }
     /**
-     *	СТВОРЕННЯ АДРЕСИ
-     *	СОЗДАНИЕ АДРЕСА
+     *    СТВОРЕННЯ АДРЕСИ
+     *    СОЗДАНИЕ АДРЕСА
      *
-     *	@param array 	$data 	ARRAY DATA
+     *    @param array     $data     ARRAY DATA
      *
-     *	@return string
+     *    @return string
      **/
     public function createAddress($data = array())
     {
         return $this->requestData('addresses', $data);
     }
     /**
-     *	РЕДАГУВАННЯ АДРЕСИ
-     *	РЕДАКТИРОВАНИЕ АДРЕСА
-     *	
-     *	@param array 	$data 	ARRAY DATA
-     *	@param int 		$id 	ID ADDRESS
+     *    РЕДАГУВАННЯ АДРЕСИ
+     *    РЕДАКТИРОВАНИЕ АДРЕСА
      *
-     *	@return string
+     *    @param array     $data     ARRAY DATA
+     *    @param int         $id     ID ADDRESS
+     *
+     *    @return string
      **/
     public function editAddress($id, $data = array())
     {
         return $this->requestData('addresses', $data, $id);
     }
     /**
-     *	ПОКАЗАТЬ АДРЕС ПО ID
-     *	ПОКАЗАТЬ АДРЕС ПО ID
-     *	
-     * 	@param int 	$id 	ID ADDRESS
+     *    ПОКАЗАТЬ АДРЕС ПО ID
+     *    ПОКАЗАТЬ АДРЕС ПО ID
      *
-     *	@return string
+     *     @param int     $id     ID ADDRESS
+     *
+     *    @return string
      *
      **/
     public function getAddress($id)
@@ -171,13 +171,13 @@ class Pochta
         return $this->requestData('addresses', '', $id, 'get');
     }
     /**
-     *	СТВОРЕННЯ КЛІЄНТА
-     *	СОЗДАНИЕ КЛИЕНТА
-     *	
-     *	@param string 	$token 	TOKEN COUNTERPARTY
-     *	@param array 	$data 	ARRAY DATA
+     *    СТВОРЕННЯ КЛІЄНТА
+     *    СОЗДАНИЕ КЛИЕНТА
      *
-     *	@return string
+     *    @param string     $token     TOKEN COUNTERPARTY
+     *    @param array     $data     ARRAY DATA
+     *
+     *    @return string
      *
      **/
     public function createClient($token, $data = array())
@@ -185,14 +185,14 @@ class Pochta
         return $this->requestData('clients?token=' . $token, $data);
     }
     /**
-     *	РЕДАГУВАННЯ КЛІЄНТУ
-     *	РЕДАКТИРОВАНИЕ КЛИЕНТА
+     *    РЕДАГУВАННЯ КЛІЄНТУ
+     *    РЕДАКТИРОВАНИЕ КЛИЕНТА
      *
-     *	@param 	int 	$id 	ID CLIENT
-     *	@param 	string 	$token 	TOKEN COUNTERPARTY
-     *	@param 	array 	$array 	ARRAY DATA
+     *    @param     int     $id     ID CLIENT
+     *    @param     string     $token     TOKEN COUNTERPARTY
+     *    @param     array     $array     ARRAY DATA
      *
-     *	@return string
+     *    @return string
      *
      **/
     public function changeClient($id, $token, $data = array())
@@ -200,12 +200,12 @@ class Pochta
         return $this->requestData('clients', $data, $id . '/?token=' . $token);
     }
     /**
-     *	ОТРИМАТИ СПИСОК КЛІЄНТІВ
-     *	ПОЛУЧИТЬ СПИСОК КЛИЕНТОВ
+     *    ОТРИМАТИ СПИСОК КЛІЄНТІВ
+     *    ПОЛУЧИТЬ СПИСОК КЛИЕНТОВ
      *
-     *	@param 	string 	$token 	TOKEN COUNTERPARTY
+     *    @param     string     $token     TOKEN COUNTERPARTY
      *
-     *	@return string
+     *    @return string
      *
      **/
     public function clientsList($token)
@@ -213,26 +213,27 @@ class Pochta
         return $this->requestData('clients/token=' . $token);
     }
     /**
-     *	ЗНАЙТИ КЛІЄНТА ПО ID
-     *	НАЙТИ КЛИЕНТА ПО ID
+     *    ЗНАЙТИ КЛІЄНТА ПО ID
+     *    НАЙТИ КЛИЕНТА ПО ID
      *
-     *	@param 	boolean 	$type 	TYPE REQUEST 	CLIENT ID || EXTERNAL ID
-     *	@param 	string 		$token 	TOKEN COUNTERPARTY
-     *	@param 	int 		$extID 	EXTERNAL ID CLIENT
+     *    @param     boolean     $type     TYPE REQUEST     CLIENT ID || EXTERNAL ID
+     *    @param     string         $token     TOKEN COUNTERPARTY
+     *    @param     int         $extID     EXTERNAL ID CLIENT
      *
-     *	@return string
+     *    @return string
      *
      **/
     public function getClient($type = true, $token, $id = 0, $extID = 0)
     {
         if ($type) {
-            
+
             return $this->requestData('clients', '', $id . '/?token' . $token);
-            
+
         } else {
-            
+
             return $this->requestData('clients', '', '/external-id/' . $extID . '/?token=' . $token);
-            
+
         }
     }
+    public function test()
 }
