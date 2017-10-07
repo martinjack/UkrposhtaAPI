@@ -235,5 +235,4 @@ class Pochta
 
         }
     }
-    public function test()
 }
