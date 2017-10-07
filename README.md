@@ -13,7 +13,7 @@ PHP класс для работы с API Укрпочты
 
 # Методы API
 
-| Tables        | Are           | Cool  |
+| Создать адрес - createAddress        ||
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
