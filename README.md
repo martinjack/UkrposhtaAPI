@@ -24,7 +24,7 @@ PHP класс для работы с API Укрпочты
 
 # Composer
 ```bash
-composer require jackmartin/ukrpochta
+composer require jackmartin/ukrpochta dev-master
 ```
 # Примеры
 
@@ -76,6 +76,12 @@ print_r($result);
 //"houseNumber":"51","apartmentNumber":"20","description":null,"countryside":false,
 //"detailedInfo":"Україна, 02099, Полтавська, Полтавський, Полтава, Шевченка, 51, 20","country":"UA"}
 ```
+
+### createClient($token, $data = array()) ###
+```php
+<?php 
+
+``` 
 
 # Библиотеки 
 
