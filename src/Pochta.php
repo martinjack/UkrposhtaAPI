@@ -102,11 +102,11 @@ class Pochta
 		$this->createLink($method, $param);
 
 		$client = new Client([
-		    'headers' => 
-			    [ 
-			    	'Content-Type' 	=>	'application/json',
-			    	'Authorization'	=>	'Bearer ' . $this->key 
-			    ]
+			'headers' => 
+			[ 
+				'Content-Type' 	=>	'application/json',
+				'Authorization'	=>	'Bearer ' . $this->key 
+			]
 		]);
 
 		try {
@@ -114,10 +114,10 @@ class Pochta
 			switch($type) {
 
 				case 'post':
-					$response = $client->post($this->api, ['body'	=>	$this->prepare($data)]);
+				$response = $client->post($this->api, ['body'	=>	$this->prepare($data)]);
 				break;
 				case 'get':
-					$response = $client->get($this->api);
+				$response = $client->get($this->api);
 				break;
 
 			}
