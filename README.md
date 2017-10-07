@@ -13,13 +13,13 @@ PHP класс для работы с API Укрпочты
 
 # Методы API
 
-1. Создание адреса
+1. Создать адрес
 	* [createAddress](https://github.com/martinjack/UkrpochtaAPI#createaddressdata--array)
-2. Редактирование адреса
+2. Редактировать адрес
 	* [editAddress](https://github.com/martinjack/UkrpochtaAPI#editaddressid-data--array)
 3. Показать адрес по ID
-	* [getAddress](https://github.com/martinjack/UkrpochtaAPI#editaddressid)
-4. Создание клиента
+	* [getAddress](https://github.com/martinjack/UkrpochtaAPI#getaddressid) 
+4. Создать нового клиента
 	* [createClient](https://github.com/martinjack/UkrpochtaAPI#createclienttoken-data--array)
 
 # Composer
