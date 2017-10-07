@@ -48,9 +48,10 @@ $result = $ukrpochta->createAddress(
 	)
 );
 print_r($result);
-//{"id":123130,"postcode":"02099","region":"Полтавська","district":"Полтавський","city":"Полтава","street":"Шевченка",
-"houseNumber":"51","apartmentNumber":"20","description":null,"countryside":false,
-"detailedInfo":"Україна, 02099, Полтавська, Полтавський, Полтава, Шевченка, 51, 20","country":"UA"}
+//{"id":123130,"postcode":"02099","region":"Полтавська","district":"Полтавський",
+//"city":"Полтава","street":"Шевченка",
+//"houseNumber":"51","apartmentNumber":"20","description":null,"countryside":false,
+//"detailedInfo":"Україна, 02099, Полтавська, Полтавський, Полтава, Шевченка, 51, 20","country":"UA"}
 ```
 - editAddress($id, $data = array())
 ```php
@@ -72,9 +73,10 @@ $result = $ukrpochta->editAddress(123130,
 	)
 );
 print_r($result);
-//{"id":123130,"postcode":"02099","region":"Полтавська","district":"Полтавський","city":"Полтава","street":"Шевченка",
-"houseNumber":"51","apartmentNumber":"20","description":null,"countryside":false,
-"detailedInfo":"Україна, 02099, Полтавська, Полтавський, Полтава, Шевченка, 51, 20","country":"UA"}
+//{"id":123130,"postcode":"02099","region":"Полтавська","district":"Полтавський",
+//"city":"Полтава","street":"Шевченка",
+//"houseNumber":"51","apartmentNumber":"20","description":null,"countryside":false,
+//"detailedInfo":"Україна, 02099, Полтавська, Полтавський, Полтава, Шевченка, 51, 20","country":"UA"}
 ```
 
 # Библиотеки 
