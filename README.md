@@ -62,12 +62,12 @@ include __DIR__ . '/vendor/autoload.php';
 $ukrpochta = new Pochta('API_KEY');
 
 $result = $ukrpochta->editAddress(123130, array(
-    'postcode' => '02099',
+    'postcode' => '02050',
     'region' => 'Полтавська',
     'district' => 'Полтавський',
     'city' => 'Полтава',
     'street' => 'Шевченка',
-    'houseNumber' => '51',
+    'houseNumber' => '25',
     'apartmentNumber' => '20'
 ));
 print_r($result);
@@ -77,6 +77,28 @@ print_r($result);
 //"detailedInfo":"Україна, 02099, Полтавська, Полтавський, Полтава, Шевченка, 51, 20","country":"UA"}
 ```
 
+### createClient($token, $data = array()) ###
+```php
+<?php
+
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+
+$result = $ukrpochta->createClient('TOKEN COUNTERPARTY', array(
+    'name'                     => 'ФОП «Діскорд',
+    'uniqueRegistrationNumber' => '32855961',
+    'externalId'               => '12345678',
+    'addressId'                => 1245,
+    'phoneNumber'              => '0954623442',
+    'counterpartyUuid'         => 'COUNTERPARTY UUID',
+    'bankCode'                 => '612456',
+    'bankAccount'              => '12345684',
+));
+print_r($result);
+``` 
 
 # Библиотеки 
 

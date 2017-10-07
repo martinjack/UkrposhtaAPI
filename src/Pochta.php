@@ -174,8 +174,8 @@ class Pochta
      *    СТВОРЕННЯ КЛІЄНТА
      *    СОЗДАНИЕ КЛИЕНТА
      *
-     *    @param string     $token     TOKEN COUNTERPARTY
-     *    @param array     $data     ARRAY DATA
+     *    @param string     $token   TOKEN COUNTERPARTY
+     *    @param array      $data    ARRAY DATA
      *
      *    @return string
      *
