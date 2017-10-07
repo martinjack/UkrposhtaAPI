@@ -51,7 +51,8 @@ print_r($result);
 //"houseNumber":"51","apartmentNumber":"20","description":null,"countryside":false,
 //"detailedInfo":"Україна, 02099, Полтавська, Полтавський, Полтава, Шевченка, 51, 20","country":"UA"}
 ```
-- editAddress($id, $data = array())
+
+### editAddress($id, $data = array()) ###
 ```php
 <?php
 use Ukrpochta\Pochta;
