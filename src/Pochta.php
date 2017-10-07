@@ -121,6 +121,9 @@ class Pochta
                 case 'get':
                     $response = $client->get($this->api);
                     break;
+                case 'put':
+                    $response = $client->put($this->api);
+                    break;
 
             }
 
@@ -231,8 +234,44 @@ class Pochta
 
         } else {
 
-            return $this->requestData('clients', '', '/external-id/' . $extID . '/?token=' . $token);
+            return $this->requestData('clients', '', 'external-id/' . $extID . '/?token=' . $token);
 
         }
+    }
+    /**
+     *  СТВОРИТИ ГРУППУ ДЛЯ ВІДПРАВЛЕНЬ
+     *  СОЗДАТЬ ГРУППУ ДЛЯ ОТПРАВЛЕНИЙ
+     *
+     *  @param  string  $token  TOKEN COUNTERPARTY
+     *  @param  array   $data   DATA ARRAY
+     *
+     **/
+    public function createGroup($token, $data = array())
+    {
+        return $this->requestData('shipment-groups?token=' . $token, $data);
+    }
+    /**
+     *  РЕДАГУВАННЯ ГРУПИ ВІДПРАВЛЕНЬ
+     *  РЕДАКТИРОВАНИЕ ГРУППЫ ОТПРАВЛЕНИЙ
+     *
+     *  @param  string  $token  TOKEN COUNTERPARTY
+     *  @param  string  $id     UUID GROUP
+     *  @param  array   $data   DATA ARRAY
+     *
+     **/
+    public function editGroup($token, $id, $data = array())
+    {
+        return $this->requestData('shipment-groups', $data, $id . '?=' . $token, 'put');
+    }
+    /**
+     *  ОТРИМАТИ ПЕРЕЛІК ВІДПРАВЛЕНЬ
+     *  ПОЛУЧИТЬ СПИСОК ОТПРАВЛЕНИЙ
+     *
+     *  @param  string  $token  TOKEN COUNTERPARTY
+     *
+     **/
+    public function groupList($token)
+    {
+        return $this->requestData('shipment-groups?token=' . $token, '', '', 'get');
     }
 }
