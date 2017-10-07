@@ -1,6 +1,7 @@
 {
     "name": "jackmartin/ukrpochta",
     "description": "Ukrpochta API",
+    "keywords": ["php", "ukrpochta"],
     "type": "library",
     "license": "MIT",
     "authors": [

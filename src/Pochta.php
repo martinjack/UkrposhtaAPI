@@ -2,7 +2,7 @@
 /**
  *    module: Ukrpochta 0.0.1
  *    author: Evgen Kitonin
- *    version: 1
+ *    version: 1.0
  *    create: 06.10.2017
  **/
 namespace Ukrpochta;
@@ -195,7 +195,7 @@ class Pochta
      *    @return string
      *
      **/
-    public function changeClient($id, $token, $data = array())
+    public function editClient($id, $token, $data = array())
     {
         return $this->requestData('clients', $data, $id . '/?token=' . $token);
     }
