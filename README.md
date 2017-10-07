@@ -23,6 +23,8 @@ PHP класс для работы с API Укрпочты
 	* [createClient](https://github.com/martinjack/UkrpochtaAPI#createclienttoken-data--array)
 5. Редактировать клиента
     * [editClient](https://github.com/martinjack/UkrpochtaAPI#editclientid-token-data--array)
+6. Создать группу отправлений
+    * [createGroup](https://github.com/martinjack/UkrpochtaAPI#creategroupdata--array)
 
 # Composer
 ```bash
