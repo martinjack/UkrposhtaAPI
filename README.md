@@ -26,9 +26,9 @@ PHP класс для работы с API Укрпочты
 6. Создать группу отправлений
     * [createGroup](https://github.com/martinjack/UkrpochtaAPI#creategroupdata--array)
 7. Редактирование группы отправлений
-    * [editGroup]()
+    * [editGroup](https://github.com/martinjack/UkrpochtaAPI#editgrouptoken-id-data--array)
 8. Получить список групп отправлений
-    * [groupList](https://github.com/martinjack/UkrpochtaAPI#editgrouptoken-id-data--array)
+    * [groupList](https://github.com/martinjack/UkrpochtaAPI#grouplisttoken)
 
 # Composer
 ```bash
@@ -181,6 +181,6 @@ use Ukrpochta\Pochta;
 include __DIR__ . '/vendor/autoload.php';
 
 $ukrpochta = new Pochta('API_KEY');
-$result = $ukrpochta->groupList('TOKEN COUNTERPARTY');
+$result = $ukrpochta->groupList('TOKEN_COUNTERPARTY');
 print_r($result);
 ```
