@@ -18,9 +18,9 @@ PHP класс для работы с API Укрпочты
 2. Редактирование адреса
 	* [editAddress](https://github.com/martinjack/UkrpochtaAPI#editaddressid-data--array)
 3. Показать адрес по ID
-	* getAddress
+	* [getAddress](https://github.com/martinjack/UkrpochtaAPI#editaddressid)
 4. Создание клиента
-	* createClient
+	* [createClient](https://github.com/martinjack/UkrpochtaAPI#createclienttoken-data--array)
 
 # Composer
 ```bash
@@ -75,6 +75,20 @@ print_r($result);
 //"city":"Полтава","street":"Шевченка",
 //"houseNumber":"51","apartmentNumber":"20","description":null,"countryside":false,
 //"detailedInfo":"Україна, 02099, Полтавська, Полтавський, Полтава, Шевченка, 51, 20","country":"UA"}
+```
+
+### getAddress($id) ###
+```php
+<?php
+
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+
+$result = $ukrpochta->getAddress(123130);
+print_r($result);
 ```
 
 ### createClient($token, $data = array()) ###
