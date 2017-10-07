@@ -77,11 +77,6 @@ print_r($result);
 //"detailedInfo":"Україна, 02099, Полтавська, Полтавський, Полтава, Шевченка, 51, 20","country":"UA"}
 ```
 
-### createClient($token, $data = array()) ###
-```php
-<?php 
-
-``` 
 
 # Библиотеки 
 
