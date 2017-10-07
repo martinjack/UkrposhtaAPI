@@ -21,6 +21,8 @@ PHP класс для работы с API Укрпочты
 	* [getAddress](https://github.com/martinjack/UkrpochtaAPI#getaddressid) 
 4. Создать нового клиента
 	* [createClient](https://github.com/martinjack/UkrpochtaAPI#createclienttoken-data--array)
+5. Редактировать клиента
+    * [editClient]()
 
 # Composer
 ```bash
@@ -109,10 +111,34 @@ $result = $ukrpochta->createClient('TOKEN COUNTERPARTY', array(
     'phoneNumber'              => '0954623442',
     'counterpartyUuid'         => 'COUNTERPARTY UUID',
     'bankCode'                 => '612456',
-    'bankAccount'              => '12345684',
+    'bankAccount'              => '12345684'
 ));
 print_r($result);
 ``` 
+
+### editClient($id, $token, $data = array()) ###
+```php
+<?php
+
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+
+$result = $ukrpochta->editClient('UUID CLIENT', 'TOKEN COUNTERPARTY', array(
+    'lastName'                 => 'Петрик',
+    'firstName'                => 'Иван',
+    'middleName'               => 'Васильович',
+    'uniqueRegistrationNumber' => '73232855',
+    'addressId'                => 1,
+    'phoneNumber'              => '0954623442',
+    'counterpartyUuid'         => 'UUID COUNTERPARTY',
+    'discount'                 => 24,
+    'bankCode'                 => 254,
+));
+print_r($result);
+```
 
 # Библиотеки 
 
