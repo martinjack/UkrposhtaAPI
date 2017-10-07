@@ -30,7 +30,7 @@ PHP класс для работы с API Укрпочты
 8. Получить список групп отправлений
     * [groupList](https://github.com/martinjack/UkrpochtaAPI#grouplisttoken)
 9. Получить группу отправлений по ID
-    * [getGroup]()
+    * [getGroup](https://github.com/martinjack/UkrpochtaAPI#getgroupid)
 
 # Composer
 ```bash
