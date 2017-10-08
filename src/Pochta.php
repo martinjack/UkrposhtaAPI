@@ -362,7 +362,7 @@ class Pochta
      **/
     public function editParcel($id, $token, $data = array())
     {
-        return $this->requestData('shipments', $data, $id . '/?token=' . $token, 'put');
+        return $this->requestData('shipments', $data, $id . '?token=' . $token, 'put');
     }
     /**
      *  ПОКАЗАТИ ПЕРЕЛІК ПОШТОВИХ ВІДПРАВЛЕНЬ
@@ -413,7 +413,7 @@ class Pochta
      **/
     public function delParcelGroup($id, $token)
     {
-        return $this->requestData('shipments', '', $id . '/shipment-group/?token=' . $token, 'delete');
+        return $this->requestData('shipments', '', $id . '/shipment-group?token=' . $token, 'delete');
     }
     /**
      *  СТВОРИТИ ФОРМУ В PDF ФОРМАТІ

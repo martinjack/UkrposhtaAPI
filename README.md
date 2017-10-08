@@ -283,7 +283,59 @@ print_r($result);
 
 ### editParcel($id, $token, $data = array()) ###
 ```php
+<?php
 
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+
+$result = $ukrpochta->editParcel('ID_PARCEL', 'TOKEN_COUNTERPARTY', array(
+    'sender'            => array(
+        'name'                     => 'ПРАТ Иван Движок',
+        'firstName'                => '',
+        'middleName'               => '',
+        'lastName'                 => '',
+        'uniqueRegistrationNumber' => '2541',
+        'counterpartyUuid'         => '2304bbe5-015c-44f6-a5bf-3e750d753a17',
+        'addressId'                => 123130,
+        'phoneNumber'              => '0954623442',
+        'individual'               => false,
+        'bankCode'                 => '123001',
+        'bankAccount'              => '111000222000999',
+    ),
+    'recipient'         => array(
+        'name'                     => 'Иванов Иван Иванович',
+        'firstName'                => 'Иван',
+        'middleName'               => 'Иванович',
+        'lastName'                 => 'Иванови',
+        'uniqueRegistrationNumber' => '52415',
+        'counterpartyUuid'         => '2304bbe5-015c-44f6-a5bf-3e750d753a17',
+        'addressId'                => 123130,
+        'phoneNumber'              => '0954623442',
+        'individual'               => true,
+        'bankCode'                 => '123011',
+        'bankAccount'              => '111000222000123',
+    ),
+    'shipmentGroupUuid' => '54d3cb05-7ff4-4310-ab7c-ea77af42d998',
+    'deliveryType'      => 'W2W',
+    'weight'            => 1500,
+    'length'            => 20,
+    'width'             => 0,
+    'height'            => 0,
+    'postPay'           => 15,
+    'description'       => 'test comment comment',
+    'parcels'           => array(
+        array(
+            'name'          => 'parcel name',
+            'weight'        => 1000,
+            'length'        => 170,
+            'declaredPrice' => 20,
+        ),
+    ),
+));
+print_r($result);
 ```
 
 ### parcelList($token) ###
@@ -325,7 +377,14 @@ print_r($result);
 ```
 ### delParcelGroup($id, $token) ###
 ```php
+<?php
+use Ukrpochta\Pochta;
 
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+$result = $ukrpochta->delParcelGroup('ID_PARCEL', 'ID_GROUP');
+print_r($result);
 ```
 
 ### createForm($id, $token, $path, $type = true) ###
