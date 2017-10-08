@@ -325,10 +325,10 @@ $result = $ukrpochta->editParcel('ID_PARCEL', 'TOKEN_COUNTERPARTY', array(
     'width'             => 0,
     'height'            => 0,
     'postPay'           => 15,
-    'description'       => 'test comment comment',
+    'description'       => 'change comment parcel',
     'parcels'           => array(
         array(
-            'name'          => 'parcel name',
+            'name'          => 'parcel name change',
             'weight'        => 1000,
             'length'        => 170,
             'declaredPrice' => 20,
