@@ -31,6 +31,20 @@ PHP класс для работы с API Укрпочты
     * [groupList](https://github.com/martinjack/UkrpochtaAPI#grouplisttoken)
 9. Получить группу отправлений по ID
     * [getGroup](https://github.com/martinjack/UkrpochtaAPI#getgroupid)
+10. Создать новую посылку
+    * createParcel
+11. Редактировать посылку
+    * editParcel
+12. Получить список почтовых отправлений
+    * [parcelList]()
+13. Получить почтовое отправление по ID
+    * getParcel
+14. Удалить почтовое отправление с группы
+    * delParcelGroup
+15. Создать форму в PDF формате
+    * createForm
+16. Создать форму 103 в PDF формате
+    * createForm103
 
 # Composer
 ```bash
@@ -139,7 +153,7 @@ include __DIR__ . '/vendor/autoload.php';
 
 $ukrpochta = new Pochta('API_KEY');
 
-$result = $ukrpochta->editClient('UUID CLIENT', 'TOKEN COUNTERPARTY', array(
+$result = $ukrpochta->editClient('UUID_CLIENT', 'TOKEN_COUNTERPARTY', array(
     'lastName'                 => 'Петрик',
     'firstName'                => 'Иван',
     'middleName'               => 'Васильович',
@@ -163,9 +177,9 @@ include __DIR__ . '/vendor/autoload.php';
 
 $ukrpochta = new Pochta('API_KEY');
 
-$result = $ukrpochta->createGroup('TOKEN COUNTERPARTY', array(
+$result = $ukrpochta->createGroup('TOKEN_COUNTERPARTY', array(
     'name'             => 'group1',
-    'counterpartyUuid' => 'UUID COUNTERPARTY',
+    'counterpartyUuid' => 'UUID_COUNTERPARTY',
 ));
 print_r($result);
 ```
@@ -208,4 +222,145 @@ include __DIR__ . '/vendor/autoload.php';
 $ukrpochta = new Pochta('API_KEY');
 $result = $ukrpochta->getGroup('UUID_GROUP', 'UUID_COUNTERPARTY');
 print_r($result);
+```
+
+### createParcel($token, $data = array()) ###
+```php
+<?php
+
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+
+$result = $ukrpochta->createParcel('ba5378df-985e-49c5-9cf3-d222fa60aa68', array(
+    'sender'            => array(
+        'name'                     => 'ПРАТ Иван Движок',
+        'firstName'                => '',
+        'middleName'               => '',
+        'lastName'                 => '',
+        'uniqueRegistrationNumber' => '2541',
+        'counterpartyUuid'         => '2304bbe5-015c-44f6-a5bf-3e750d753a17',
+        'addressId'                => 123130,
+        'phoneNumber'              => '0954623442',
+        'individual'               => false,
+        'bankCode'                 => '123001',
+        'bankAccount'              => '111000222000999',
+    ),
+    'recipient'         => array(
+        'name'                     => 'Иванов Иван Иванович',
+        'firstName'                => 'Иван',
+        'middleName'               => 'Иванович',
+        'lastName'                 => 'Иванови',
+        'uniqueRegistrationNumber' => '52415',
+        'counterpartyUuid'         => '2304bbe5-015c-44f6-a5bf-3e750d753a17',
+        'addressId'                => 123130,
+        'phoneNumber'              => '0954623442',
+        'individual'               => true,
+        'bankCode'                 => '123011',
+        'bankAccount'              => '111000222000123',
+    ),
+    'shipmentGroupUuid' => '54d3cb05-7ff4-4310-ab7c-ea77af42d998',
+    'deliveryType'      => 'W2W',
+    'weight'            => 150,
+    'length'            => 20,
+    'width'             => 0,
+    'height'            => 0,
+    'postPay'           => 15,
+    'description'       => 'test comment comment',
+    'parcels'           => array(
+        array(
+            'name'          => 'parcel name',
+            'weight'        => 1000,
+            'length'        => 170,
+            'declaredPrice' => 20,
+        ),
+    ),
+));
+print_r($result);
+```
+
+### editParcel($id, $token, $data = array()) ###
+```php
+
+```
+
+### parcelList($token) ###
+```php
+<?php
+
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+$result = $ukrpochta->parcelList('TOKEN_COUNTERPARTY');
+print_r($result);
+```
+
+### getParcel($id, $token, $type = true) ###
+```php
+<?php
+
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+$result = $ukrpochta->getParcel('ID_PARCEL', 'TOKEN_COUNTERPARTY');
+print_r($result);
+```
+
+```php
+<?php
+
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+$result = $ukrpochta->getParcel('ID_SENDER', 'TOKEN_COUNTERPARTY');
+print_r($result);
+```
+### delParcelGroup($id, $token) ###
+```php
+
+```
+
+### createForm($id, $token, $path, $type = true) ###
+```php
+<?php
+
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+
+$ukrpochta->createForm('ID_PARCEL', 'TOKEN_COUNTERPARTY', __DIR__ . '/file.pdf');
+```
+
+```php
+<?php
+
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+
+$ukrpochta->createForm('ID_GROUP', 'TOKEN_COUNTERPARTY', __DIR__ . '/file.pdf');
+```
+
+### createForm103($id, $token, $path) ###
+```php
+<?php
+
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+$ukrpochta->createForm103('ID_GROUP', 'TOKEN_COUNTERPARTY', __DIR__ . '/file.pdf');
 ```

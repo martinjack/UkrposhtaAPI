@@ -75,11 +75,12 @@ class Pochta
         $this->api = $this->api . $this->version . '/' . $method . $param;
     }
     /**
-     *    PREPARE DATA
+     *  ПІДГОТОВКА ДАННИХ
+     *  ПОДГОТОВКА ДАННЫХ
      *
-     *    @param     array     $data     ARRAY DATA
+     *  @param  array   $data   ARRAY DATA
      *
-     *    @return JSON
+     *  @return JSON
      *
      **/
     private function prepare($data)
@@ -87,14 +88,15 @@ class Pochta
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     }
     /**
-     *    REQUEST DATA
+     *  ВИКОНУЄМО ЗАПРОС
+     *  ВЫПОЛНЯЕМ ЗАПРОС
      *
-     *    @param     string     $method     METHOD REQUEST
-     *    @param     array      $data       ARRAY DATA
-     *    @param     string     $param      PARAMETERS
-     *    @param     string     $type       TYPE REQUEST
+     *  @param  string  $method     METHOD REQUEST
+     *  @param  array   $data       ARRAY DATA
+     *  @param  string  $param      PARAMETERS
+     *  @param  string  $type       TYPE REQUEST
      *
-     *    @return data
+     *  @return data
      *
      **/
     private function requestData($method, $data = '', $param = '', $type = 'post')
@@ -126,6 +128,9 @@ class Pochta
                         'body' => $this->prepare($data),
                     ));
                     break;
+                case 'delete':
+                    $response = $client->delete($this->api);
+                    break;
 
             }
 
@@ -136,6 +141,41 @@ class Pochta
             return $e->getResponse()->getBody()->getContents();
 
         }
+    }
+    /**
+     *  ЗБЕРІГАЄМО PDF ФАЙЛ
+     *  СОХРАНЯЕМ PDF ФАЙЛ
+     *
+     *  @param  stream   $pdf   STREAM CONTENT PDF
+     *  @param  string   $path  PATH SAVE PDF FILE
+     *
+     *  @return pdf file
+     **/
+    private function savePDF($pdf, $path)
+    {
+        file_put_contents($path, $pdf);
+        header('Content-type: application/pdf');
+        header('Content-Disposition: inline; filename="' . basename($path) . '"');
+        header('Content-Transfer-Encoding: binary');
+        header('Content-Length: ' . filesize($path));
+        header('Accept-Ranges: bytes');
+        readfile($path);
+    }
+    /**
+     *  ПЕРЕВІРКА НА ПОМИЛКУ
+     *  ПРОВЕРКА НА ОШИБКУ
+     *
+     *  @param  json    $content    JSON DATA RESPONSE
+     *
+     **/
+    private function error($content)
+    {
+        $content = json_decode($content, true);
+        if (isset($content['message'])) {
+            print_r($content);
+            return false;
+        }
+        return true;
     }
     /**
      *    СТВОРЕННЯ АДРЕСИ
@@ -221,14 +261,14 @@ class Pochta
      *    ЗНАЙТИ КЛІЄНТА ПО ID
      *    НАЙТИ КЛИЕНТА ПО ID
      *
-     *    @param     boolean     $type      TYPE REQUEST CLIENT ID || EXTERNAL ID
      *    @param     string      $token     TOKEN COUNTERPARTY
      *    @param     int         $extID     EXTERNAL ID CLIENT
+     *    @param     boolean     $type      TYPE REQUEST CLIENT ID || EXTERNAL ID
      *
      *    @return string
      *
      **/
-    public function getClient($type = true, $token, $id = 0, $extID = 0)
+    public function getClient($token, $id = 0, $extID = 0, $type = true)
     {
         if ($type) {
 
@@ -283,15 +323,139 @@ class Pochta
         return $this->requestData('shipment-groups?token=' . $token, '', '', 'get');
     }
     /**
-     *   ПОКАЗАТИ ГРУППУ ВІДПРАВЛЕНЬ ПО ID
-     *   ПОКАЗАТЬ ГРУППУ ОТПРАВЛЕНИЙ ПО ID
+     *  ПОКАЗАТИ ГРУППУ ВІДПРАВЛЕНЬ ПО ID
+     *  ПОКАЗАТЬ ГРУППУ ОТПРАВЛЕНИЙ ПО ID
      *
      *  @param string   $id
      *  @param string   $token
+     *
+     *  @return string
      *
      **/
     public function getGroup($id, $token)
     {
         return $this->requestData('shipment-groups', '', $id . '?token=' . $token, 'get');
+    }
+    /**
+     *  СТВОРИТИ НОВУ ПОСИЛКУ
+     *  СОЗДАТЬ НОВУЮ ПОСЫЛКУ
+     *
+     *  @param string   $token  TOKEN COUNTERPARTY
+     *
+     *  @return string
+     *
+     **/
+    public function createParcel($token, $data = array())
+    {
+        return $this->requestData('shipments?token=' . $token, $data);
+    }
+    /**
+     *  РЕДАГУВАТИ ПОШТОВЕ ВІДПРАВЛЕННЯ
+     *  РЕДАКТИРОВАНИЕ ПОЧТОВОЕ ОТПРАВЛЕНИЕ
+     *
+     *  @param  string  $id     UUID PARCEL
+     *  @param  string  $token  TOKEN COUNTERPARTY
+     *  @param  array   $data   DATA ARRAY
+     *
+     *  @return string
+     *
+     **/
+    public function editParcel($id, $token, $data = array())
+    {
+        return $this->requestData('shipments', $data, $id . '/?token=' . $token, 'put');
+    }
+    /**
+     *  ПОКАЗАТИ ПЕРЕЛІК ПОШТОВИХ ВІДПРАВЛЕНЬ
+     *  ПОКАЗАТЬ СПИСОК ПОЧТОВЫХ ОТПРАВЛЕННИЙ
+     *
+     *  @param  string  $token  TOKEN COUNTERPARTY
+     *
+     *  @return string
+     *
+     **/
+    public function parcelList($token)
+    {
+        return $this->requestData('shipments?token=' . $token, '', '', 'get');
+    }
+    /**
+     *  ПОКАЗАТИ ПОШТОВЕ ВІДПРАВЛЕННЯ ПО ID
+     *  ПОКАЗАТЬ ПОЧТОВОЕ ОТПРАВЛЕНИЕ ПО ID
+     *
+     *  @param  string  $id     UUID PARCEL
+     *  @param  string  $token  TOKEN COUNTERPARTY
+     *  @param  boolean $type   TYPE REQUEST BY UUID PARCEL || SENDER UUID
+     *
+     *  @return string
+     *
+     **/
+    public function getParcel($id, $token, $type = true)
+    {
+        if ($type) {
+
+            return $this->requestData('shipments', '', $id . '?token=' . $token, 'get');
+
+        } else {
+
+            return $this->requestData('shipments', '', '?senderuuid=' . $id . '&token=' . $token, 'get');
+
+        }
+
+    }
+    /**
+     *  ВИДАЛЕННЯ ПОШТОВОГО ВІДПРАВЛЕННЯ З ГРУПИ
+     *  УДАЛЕНИЯ ПОЧТОВОГО ОТПРАВЛЕНИЯ С ГРУППЫ
+     *
+     *  @param  string  $id     ID PARCEL
+     *  @param  string  $token  TOKEN COUNTERPARTY
+     *
+     *  @return string
+     *
+     **/
+    public function delParcelGroup($id, $token)
+    {
+        return $this->requestData('shipments', '', $id . '/shipment-group/?token=' . $token, 'delete');
+    }
+    /**
+     *  СТВОРИТИ ФОРМУ В PDF ФОРМАТІ
+     *  СОЗДАТЬ ФОРМУ В PDF ФОРМАТЕ
+     *
+     *  @param string   $id     ID PARCEL || ID GROUP
+     *  @param string   $token  TOKEN COUNTERPARTY
+     *  @param string   $path   PATH SAVE PDS FORM
+     *  @param boolean  $type   TYPE REQUEST ID PARCEL || ID GROUP
+     *
+     *  @return string
+     **/
+    public function createForm($id, $token, $path, $type = true)
+    {
+        if ($type) {
+
+            $pdf = $this->requestData('shipments', '', $id . '/form?token=' . $token, 'get');
+
+        } else {
+
+            $pdf = $this->requestData('shipment-groups', '', $id . '/form?token=' . $token, 'get');
+
+        }
+        if ($this->error($pdf)) {
+            $this->savePDF($pdf, $path);
+        }
+    }
+    /**
+     *  СТВОРИТИ ФОРМУ 103 В PDF ФОРМАТІ
+     *  СОЗДАТЬ ФОРМУ 103 В PDF ФОРМАТЕ
+     *
+     *  @param string   $id     ID GROUP
+     *  @param string   $token  TOKEN COUNTERPARTY
+     *
+     *  @return string
+     **/
+    public function createForm103($id, $token, $path)
+    {
+        $pdf = $this->requestData('shipment-groups', '', $id . '/form103?token=' . $token, 'get');
+
+        if ($this->error($pdf)) {
+            $this->savePDF($pdf, $path);
+        }
     }
 }
