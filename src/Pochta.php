@@ -200,7 +200,7 @@ class Pochta
      **/
     public function editAddress($id, $data = array())
     {
-        return $this->requestData('addresses', $data, $id);
+        return $this->requestData('addresses', $data, $id, 'put');
     }
     /**
      *    ПОКАЗАТИ АДРЕС ПО ID
@@ -242,7 +242,7 @@ class Pochta
      **/
     public function editClient($id, $token, $data = array())
     {
-        return $this->requestData('clients', $data, $id . '/?token=' . $token);
+        return $this->requestData('clients', $data, $id . '/?token=' . $token, 'put');
     }
     /**
      *    ОТРИМАТИ СПИСОК КЛІЄНТІВ
@@ -255,7 +255,7 @@ class Pochta
      **/
     public function clientsList($token)
     {
-        return $this->requestData('clients/token=' . $token);
+        return $this->requestData('clients', '', '/?token=' . $token, 'get');
     }
     /**
      *    ЗНАЙТИ КЛІЄНТА ПО ID
@@ -268,15 +268,15 @@ class Pochta
      *    @return string
      *
      **/
-    public function getClient($token, $id = 0, $extID = 0, $type = true)
+    public function getClient($token, $id = '', $extID = '', $type = true)
     {
         if ($type) {
 
-            return $this->requestData('clients', '', $id . '/?token' . $token);
+            return $this->requestData('clients', '', $id . '?token=' . $token, 'get');
 
         } else {
 
-            return $this->requestData('clients', '', 'external-id/' . $extID . '/?token=' . $token);
+            return $this->requestData('clients', '', 'external-id/' . $extID . '?token=' . $token, 'get');
 
         }
     }

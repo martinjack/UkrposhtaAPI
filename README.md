@@ -24,7 +24,7 @@ PHP класс для работы с API Укрпочты
 5. Редактировать клиента
     * [editClient](https://github.com/martinjack/UkrpochtaAPI#editclientid-token-data--array)
 6. Получить список клиентов
-    * [clientsList]()
+    * [clientsList](https://github.com/martinjack/UkrpochtaAPI#clientslisttoken)
 7. Создать группу отправлений
     * [createGroup](https://github.com/martinjack/UkrpochtaAPI#creategroupdata--array)
 8. Редактирование группы отправлений
@@ -178,6 +178,29 @@ include __DIR__ . '/vendor/autoload.php';
 
 $ukrpochta = new Pochta('API_KEY');
 $result = $ukrpochta->clientsList('TOKEN_COUNTERPARTY');
+print_r($result);
+```
+
+### getClient($token, $id = 0, $extID = 0, $type = true) ###
+```php
+<?php
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+$result = $ukrpochta->getClient('TOKEN_COUNTERPARTY', 'ID_CLIENT');
+print_r($result);
+```
+
+```php
+<?php
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+$result = $ukrpochta->getClient('TOKEN_COUNTERPARTY', '', 'externalId_CLIENT', false);
 print_r($result);
 ```
 
