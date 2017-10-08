@@ -451,6 +451,8 @@ $ukrpochta = new Pochta('API_KEY');
 $ukrpochta->createForm('ID_GROUP', 'TOKEN_COUNTERPARTY', __DIR__ . '/file.pdf', false);
 ```
 
+![Example PDF](https://i.imgur.com/7G9PaIs.png)
+
 ### createForm103($id, $token, $path) ###
 ```php
 <?php
