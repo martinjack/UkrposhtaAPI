@@ -27,27 +27,27 @@ PHP класс для работы с API Укрпочты
     * [clientsList](https://github.com/martinjack/UkrpochtaAPI#clientslisttoken)
 7. Получить клиента по ID или ExternalID
     * [getClient](https://github.com/martinjack/UkrpochtaAPI#getclienttoken-id--0-extid--0-type--true)
-7. Создать группу отправлений
+8. Создать группу отправлений
     * [createGroup](https://github.com/martinjack/UkrpochtaAPI#creategroupdata--array)
-8. Редактирование группы отправлений
+9. Редактирование группы отправлений
     * [editGroup](https://github.com/martinjack/UkrpochtaAPI#editgrouptoken-id-data--array)
-9. Получить список групп отправлений
+10. Получить список групп отправлений
     * [groupList](https://github.com/martinjack/UkrpochtaAPI#grouplisttoken)
-10. Получить группу отправлений по ID
+11. Получить группу отправлений по ID
     * [getGroup](https://github.com/martinjack/UkrpochtaAPI#getgroupid)
-11. Создать новую посылку
+12. Создать новую посылку
     * [createParcel](https://github.com/martinjack/UkrpochtaAPI#createparceltoken-data--array)
-12. Редактировать посылку
+13. Редактировать посылку
     * [editParcel](https://github.com/martinjack/UkrpochtaAPI#editparcelid-token-data--array)
-13. Получить список почтовых отправлений
+14. Получить список почтовых отправлений
     * [parcelList](https://github.com/martinjack/UkrpochtaAPI#parcellisttoken)
-14. Получить почтовое отправление по ID
+15. Получить почтовое отправление по ID
     * [getParcel](https://github.com/martinjack/UkrpochtaAPI#getparcelid-token-type--true)
-15. Удалить почтовое отправление с группы
+16. Удалить почтовое отправление с группы
     * [delParcelGroup](https://github.com/martinjack/UkrpochtaAPI#delparcelgroupid-token)
-16. Создать форму в PDF формате
+17. Создать форму в PDF формате
     * [createForm](https://github.com/martinjack/UkrpochtaAPI#createformid-token-path-type--true)
-17. Создать форму 103 в PDF формате
+18. Создать форму 103 в PDF формате
     * [createForm103](https://github.com/martinjack/UkrpochtaAPI#createform103id-token-path)
 
 # Composer
