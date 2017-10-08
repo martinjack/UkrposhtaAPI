@@ -23,27 +23,29 @@ PHP класс для работы с API Укрпочты
 	* [createClient](https://github.com/martinjack/UkrpochtaAPI#createclienttoken-data--array)
 5. Редактировать клиента
     * [editClient](https://github.com/martinjack/UkrpochtaAPI#editclientid-token-data--array)
-6. Создать группу отправлений
+6. Получить список клиентов
+    * [clientsList]()
+7. Создать группу отправлений
     * [createGroup](https://github.com/martinjack/UkrpochtaAPI#creategroupdata--array)
-7. Редактирование группы отправлений
+8. Редактирование группы отправлений
     * [editGroup](https://github.com/martinjack/UkrpochtaAPI#editgrouptoken-id-data--array)
-8. Получить список групп отправлений
+9. Получить список групп отправлений
     * [groupList](https://github.com/martinjack/UkrpochtaAPI#grouplisttoken)
-9. Получить группу отправлений по ID
+10. Получить группу отправлений по ID
     * [getGroup](https://github.com/martinjack/UkrpochtaAPI#getgroupid)
-10. Создать новую посылку
+11. Создать новую посылку
     * [createParcel](https://github.com/martinjack/UkrpochtaAPI#createparceltoken-data--array)
-11. Редактировать посылку
+12. Редактировать посылку
     * [editParcel](https://github.com/martinjack/UkrpochtaAPI#editparcelid-token-data--array)
-12. Получить список почтовых отправлений
+13. Получить список почтовых отправлений
     * [parcelList](https://github.com/martinjack/UkrpochtaAPI#parcellisttoken)
-13. Получить почтовое отправление по ID
+14. Получить почтовое отправление по ID
     * [getParcel](https://github.com/martinjack/UkrpochtaAPI#getparcelid-token-type--true)
-14. Удалить почтовое отправление с группы
+15. Удалить почтовое отправление с группы
     * [delParcelGroup](https://github.com/martinjack/UkrpochtaAPI#delparcelgroupid-token)
-15. Создать форму в PDF формате
+16. Создать форму в PDF формате
     * [createForm](https://github.com/martinjack/UkrpochtaAPI#createformid-token-path-type--true)
-16. Создать форму 103 в PDF формате
+17. Создать форму 103 в PDF формате
     * [createForm103](https://github.com/martinjack/UkrpochtaAPI#createform103id-token-path)
 
 # Composer
@@ -164,6 +166,18 @@ $result = $ukrpochta->editClient('UUID_CLIENT', 'TOKEN_COUNTERPARTY', array(
     'discount'                 => 24,
     'bankCode'                 => 254,
 ));
+print_r($result);
+```
+
+### clientsList($token) ###
+```php
+<?php
+use Ukrpochta\Pochta;
+
+include __DIR__ . '/vendor/autoload.php';
+
+$ukrpochta = new Pochta('API_KEY');
+$result = $ukrpochta->clientsList('TOKEN_COUNTERPARTY');
 print_r($result);
 ```
 
