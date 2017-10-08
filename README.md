@@ -32,19 +32,19 @@ PHP класс для работы с API Укрпочты
 9. Получить группу отправлений по ID
     * [getGroup](https://github.com/martinjack/UkrpochtaAPI#getgroupid)
 10. Создать новую посылку
-    * createParcel
+    * [createParcel](https://github.com/martinjack/UkrpochtaAPI#createparceltoken-data--array)
 11. Редактировать посылку
-    * editParcel
+    * [editParcel](https://github.com/martinjack/UkrpochtaAPI#editparcelid-token-data--array)
 12. Получить список почтовых отправлений
-    * [parcelList]()
+    * [parcelList](https://github.com/martinjack/UkrpochtaAPI#parcellisttoken)
 13. Получить почтовое отправление по ID
-    * getParcel
+    * [getParcel](https://github.com/martinjack/UkrpochtaAPI#getparcelid-token-type--true)
 14. Удалить почтовое отправление с группы
-    * delParcelGroup
+    * [delParcelGroup](https://github.com/martinjack/UkrpochtaAPI#delparcelgroupid-token)
 15. Создать форму в PDF формате
-    * createForm
+    * [createForm](https://github.com/martinjack/UkrpochtaAPI#createformid-token-path-type--true)
 16. Создать форму 103 в PDF формате
-    * createForm103
+    * [createForm103](https://github.com/martinjack/UkrpochtaAPI#createform103id-token-path)
 
 # Composer
 ```bash
@@ -350,7 +350,7 @@ include __DIR__ . '/vendor/autoload.php';
 
 $ukrpochta = new Pochta('API_KEY');
 
-$ukrpochta->createForm('ID_GROUP', 'TOKEN_COUNTERPARTY', __DIR__ . '/file.pdf');
+$ukrpochta->createForm('ID_GROUP', 'TOKEN_COUNTERPARTY', __DIR__ . '/file.pdf', false);
 ```
 
 ### createForm103($id, $token, $path) ###
