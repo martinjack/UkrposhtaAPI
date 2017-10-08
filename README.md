@@ -25,6 +25,8 @@ PHP класс для работы с API Укрпочты
     * [editClient](https://github.com/martinjack/UkrpochtaAPI#editclientid-token-data--array)
 6. Получить список клиентов
     * [clientsList](https://github.com/martinjack/UkrpochtaAPI#clientslisttoken)
+7. Получить клиента по ID или ExternalID
+    * [getClient](https://github.com/martinjack/UkrpochtaAPI#getclienttoken-id--0-extid--0-type--true)
 7. Создать группу отправлений
     * [createGroup](https://github.com/martinjack/UkrpochtaAPI#creategroupdata--array)
 8. Редактирование группы отправлений
