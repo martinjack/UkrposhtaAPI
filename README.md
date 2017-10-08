@@ -11,6 +11,15 @@ PHP класс для работы с API Укрпочты
 * PHP 5.6 или выше
 * Composer
 
+# Composer
+```bash
+composer require jackmartin/ukrpochta dev-master
+```
+
+# Библиотеки 
+
+1. [Guzzle](https://github.com/guzzle/guzzle)
+
 # Методы API
 
 1. Создать адрес
@@ -49,15 +58,6 @@ PHP класс для работы с API Укрпочты
     * [createForm](https://github.com/martinjack/UkrpochtaAPI#createformid-token-path-type--true)
 18. Создать форму 103 в PDF формате
     * [createForm103](https://github.com/martinjack/UkrpochtaAPI#createform103id-token-path)
-
-# Composer
-```bash
-composer require jackmartin/ukrpochta dev-master
-```
-
-# Библиотеки 
-
-1. [Guzzle](https://github.com/guzzle/guzzle)
 
 # Примеры
 
