@@ -13,7 +13,7 @@ PHP класс для работы с API Укрпочты
 
 # Composer
 ```bash
-composer require jackmartin/ukrpochta
+composer require jackmartin/ukrpochta 
 ```
 
 # Библиотеки 
