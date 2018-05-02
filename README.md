@@ -4,7 +4,7 @@ PHP класс для работы с API Укрпочты
 
 # Документация
 
-[API documentation v.1.2](https://drive.google.com/file/d/0B-n0UjF7kxV_T253YU5nOHdCQlk/view?usp=sharing)
+[API documentation v.1.2](https://drive.google.com/open?id=1MqTnJsbgvLKOx8lIbvdUfLwri6N5Dypc)
 
 # Требование
 
