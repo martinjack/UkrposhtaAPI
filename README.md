@@ -2,6 +2,8 @@
 
 PHP класс для работы с API Укрпочты
 
+[![Latest Stable Version](https://poser.pugx.org/jackmartin/ukrpochta/v/stable)](https://packagist.org/packages/jackmartin/ukrpochta) [![Total Downloads](https://poser.pugx.org/jackmartin/ukrpochta/downloads)](https://packagist.org/packages/jackmartin/ukrpochta) [![License](https://poser.pugx.org/jackmartin/ukrpochta/license)](https://packagist.org/packages/jackmartin/ukrpochta)
+
 # Документация
 
 [API documentation v.1.2](https://drive.google.com/open?id=1MqTnJsbgvLKOx8lIbvdUfLwri6N5Dypc)
